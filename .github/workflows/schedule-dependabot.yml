@@ -1,0 +1,35 @@
+name: Dependabot (Weekly Go Updates)
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+jobs:
+  go-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Create Pull Request
+        uses: dependabot/fetch-metadata@v2
+        with:
+          update-type: version-update:semver-minor
+          reviewers: |
+            dependabot
+          commit-message: |
+            chore(deps): update Go module dependencies
+
+      - name: Open PR with dependency updates
+        run: |
+          gh pr create \
+            --title "chore(deps): update Go module dependencies" \
+            --body "Weekly automatic Go module dependency updates." \
+            --base main \
+            --head "dependabot/go_modules"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
