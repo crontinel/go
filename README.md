@@ -1,5 +1,30 @@
 # Crontinel Go Client
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/crontinel/go.svg)](https://pkg.go.dev/github.com/crontinel/go)
+
+Report cron and background job runs to [Crontinel Cloud](https://app.crontinel.com).
+
+## Quickstart
+
+```go
+import "github.com/crontinel/go"
+
+client := crontinel.NewClient("your_api_key")
+client.BaseURL = "https://app.crontinel.com/api/v1"
+
+// Report a cron run
+client.ReportCronRun(crontinel.CronRun{
+    Command:    "php artisan schedule:run",
+    ExitCode:   0,
+    DurationMs: 1500,
+    Status:     "completed",
+})
+```
+
+Get your API key at [app.crontinel.com](https://app.crontinel.com).
+
+## Usage
+
 ```go
 package main
 
