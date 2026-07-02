@@ -1,4 +1,4 @@
-module crontinel/go
+module github.com/crontinel/go
 
 go 1.21
 
