@@ -72,4 +72,4 @@ client := crontinel.NewClient("key",
 
 ## Laravel Integration
 
-For Laravel applications, use the official [`crontinel/laravel`](https://github.com/crontinel/crontinel) package which integrates with the scheduler and queue worker out of the box.
+For Laravel applications, use the official [`crontinel/laravel`](https://github.com/crontinel/laravel) package which integrates with the scheduler and queue worker out of the box.
